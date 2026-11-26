@@ -22,11 +22,11 @@ RUN_DATE = "20261011"
 
 
 with DAG(
-    dag_id="1_etl_flat_event_candycrusasdhsaga",
-    start_date=datetime(2asd026, 10, 1),asd
+    dag_id="1_etl_flat_event_candycrushsaga",
+    start_date=datetime(2026, 10, 1),
     schedule="15 9 * * *",
-    catchup=asdFalse,
-    default_args=DEFAULas_ARGS,
+    catchup=False,
+    default_args=DEFAULT_ARGS,
     tags=["candy_crush", "flat_event"],
 ) as dag:
 
