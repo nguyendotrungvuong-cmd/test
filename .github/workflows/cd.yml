@@ -14,5 +14,5 @@ jobs:
         key: ${{ secrets.VM_SSH_KEY }}
         script: |
           cd ~/test
-          git pull
+          git pull origin main
           docker compose up -d --build
