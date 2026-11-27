@@ -1,18 +1,23 @@
 name: CD
+
 on:
   push:
-    branches: [main] # chạy sau khi merge PR vào main
-    workflow_dispatch: # cho phép bấm Run workflow bằng tay
+    branches:
+      - main
+
+  workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: appleboy/ssh-action@v1
-      with:
-        host: ${{ secrets.VM_HOST }}
-        username: ${{ secrets.VM_USER }}
-        key: ${{ secrets.VM_SSH_KEY }}
-        script: |
-          cd ~/test
-          git pull origin main
-          docker compose up -d --build
+      - uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.VM_SSH_KEY }}
+          script: |
+            set -eux
+            cd ~/test
+            git pull --ff-only origin main
+            docker compose up -d --build
