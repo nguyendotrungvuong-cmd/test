@@ -13,6 +13,6 @@ jobs:
         username: ${{ secrets.VM_USER }}
         key: ${{ secrets.VM_SSH_KEY }}
         script: |
-          cd ~/candy-crush-airflow
+          cd ~/test
           git pull
           docker compose up -d --build
